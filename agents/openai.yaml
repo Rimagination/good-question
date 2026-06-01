@@ -1,0 +1,4 @@
+interface:
+  display_name: "Good Question"
+  short_description: "Sharpen research ideas into strong scientific questions."
+  default_prompt: "Use $good-question to turn my rough research idea into a sharp, testable question."

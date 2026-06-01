@@ -1,0 +1,10 @@
+# Local generated drafts that are not used by the README.
+assets/good-question-banner.png
+assets/good-question-hero.png
+assets/good-question-hero-title.png
+assets/good-question-integrated-banner.png
+assets/good-question-paperfit-inspired-base.png
+
+# OS/editor noise.
+Thumbs.db
+.DS_Store
