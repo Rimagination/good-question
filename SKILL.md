@@ -15,7 +15,8 @@ Help a researcher turn a vague interest, literature gap, rough idea, failed proj
 - Make hidden assumptions explicit before proposing methods.
 - Ask at most one short clarifying question if the field, constraint, or existing idea is missing; otherwise proceed with stated assumptions.
 - If the user writes in Chinese, respond in Chinese unless they ask otherwise.
-- If the user requests current literature, recent papers, or field-specific evidence, gather evidence first using the appropriate research or web tools.
+- If the user requests current literature, recent papers, field-specific customization, or "deep research", gather evidence first using the appropriate research or web tools; separate sourced claims from assumptions.
+- Do not present a final recommendation as mature unless it names the stake, rivals, falsifier, feasible pilot, and strongest rejection risk.
 
 ## Workflow
 
@@ -31,6 +32,7 @@ Choose the closest user state and load only the reference cards that help.
 | Needs mechanism or experiment design | Generate competing hypotheses and discriminating tests | `references/platt-strong-inference.md` |
 | Has a proposal, grant, or paper angle | Stress-test value, risk, and evaluation | `references/heilmeier-catechism.md` |
 | Project is stuck or failed | Reframe through boundary conditions, what changed, and cloud pivots | `references/alon-problem-choice.md`, `references/orchestra-lenses.md` |
+| Needs current or field-specific grounding | Build a compact evidence brief before ideation | `references/domain-brief-template.md` |
 
 ### 2. Build Minimal Context
 
@@ -43,6 +45,8 @@ Extract or ask for:
 - Relevant constraints: publication venue, ethical limits, sample size, field site, compute, seasonality, or access.
 
 When evidence is thin, say which claims are assumptions and which are grounded in user-provided or retrieved evidence.
+
+If `references/domain-brief-template.md` is loaded, produce a compact domain brief before generating candidate questions. Include source links or citations, live uncertainties, dominant assumptions, and evidence gaps.
 
 ### 3. Diverge With High-Value Lenses
 
@@ -81,7 +85,11 @@ Drop or park candidates that fail any kill rule:
 - Depends on a method before the problem is real.
 - Adds complexity without showing what the complexity buys.
 
-### 5. Produce Good Question Cards
+### 5. Strengthen and Stress-Test
+
+Before finalizing, load `references/question-patterns.md` when candidates still look like topics, methods, or gaps. Load `references/editor-desk-reject.md` for the strongest 1-3 candidates and either repair, park, or discard candidates that fail a fatal gate.
+
+### 6. Produce Good Question Cards
 
 For the top 1-3 questions, output this card:
 
@@ -115,16 +123,21 @@ Load reference cards on demand:
 - `references/hamming-nielsen-research-taste.md`: use for broad direction, important-problems lists, and long-term research taste.
 - `references/peters-question-development.md`: use for turning literature clusters into clear research questions.
 - `references/orchestra-lenses.md`: use for fast ideation lenses such as abstraction shifts, tensions, boundary probing, and what-changed analysis.
+- `references/domain-brief-template.md`: use before ideation when current, field-specific, or source-grounded customization is needed.
+- `references/question-patterns.md`: use to rewrite weak topics, gaps, methods, and project activities into stronger questions.
+- `references/editor-desk-reject.md`: use as a final skeptical gate before recommending top questions.
 
 ## Response Shape
 
 Prefer this order:
 
 1. Brief diagnosis of the user's current state.
-2. Chosen lenses and why.
-3. Candidate questions.
-4. Ranked shortlist.
-5. Good Question Cards.
-6. Next action.
+2. Domain brief, if current or field-specific evidence was requested.
+3. Chosen lenses and why.
+4. Candidate questions.
+5. Ranked shortlist.
+6. Repair or rejection notes for weak finalists.
+7. Good Question Cards.
+8. Next action.
 
 Keep the tone constructive but demanding. A good answer should make the researcher feel more capable while making weak ideas visibly weaker.

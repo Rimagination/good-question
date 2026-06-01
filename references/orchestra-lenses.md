@@ -4,7 +4,6 @@ Use this card for fast generation of research-question variants. Combine with th
 
 Sources:
 - Orchestra Research, "Research Idea Brainstorming". https://github.com/Orchestra-Research/AI-Research-SKILLs/blob/main/21-research-ideation/brainstorming-research-ideas/SKILL.md
-- Related creative-research lenses in EvoScientist/Orchestra-style skills.
 
 ## Lenses
 
@@ -18,7 +17,7 @@ Move up to a general principle, down to an extreme or constrained instance, and 
 
 ### Tension hunting
 
-Look for trade-offs treated as inevitable: performance versus efficiency, generality versus specificity, accuracy versus interpretability, scale versus accessibility, conservation versus production, or short-term yield versus long-term resilience.
+Look for trade-offs treated as inevitable: performance versus efficiency, generality versus specificity, accuracy versus interpretability, scale versus accessibility, short-term versus long-term outcomes, or simplicity versus fidelity.
 
 ### Cross-pollination
 

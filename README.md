@@ -46,6 +46,7 @@
 | 需要机制解释 | 拆出竞争性假设和关键判别观察或实验 |
 | 准备 proposal 或基金 | 用评审视角压力测试价值、风险、受众、证据路径和反对意见 |
 | 项目卡住了 | 通过边界条件、失败信号和条件变化重新定位问题 |
+| 需要领域定制或近期文献 | 先做 compact domain brief，再基于公开来源定制问题 |
 
 最终输出通常不是一串灵感，而是一张或几张 `Good Question Card`：
 
@@ -75,6 +76,24 @@
 | 科研品味 | Hamming；Nielsen [7][8] | 维护重要问题清单，识别现在可攻击的问题，并长期训练判断力 |
 | 问题发展 | Peters [9] | 把问题形成看成一个由文献、不确定性和约束共同塑造的迭代创造过程 |
 | 结构化发散 | Orchestra Research [10] | 使用抽象层级移动、张力寻找、边界探测、what changed、跨域类比和利益相关者轮换等 lenses |
+| 证据化定制 | 以上来源的综合流程 | 在需要领域定制时先形成 source-grounded domain brief，再进入问题生成 |
+| 成熟度闸门 | 以上来源的综合流程 | 用 editor-desk reject gate 过滤 novelty-only、method-first、无证伪点和无受众的问题 |
+
+### 安装
+
+Codex:
+
+```bash
+git clone https://github.com/Rimagination/good-question.git ~/.codex/skills/good-question
+```
+
+Claude Code:
+
+```bash
+git clone https://github.com/Rimagination/good-question.git ~/.claude/skills/good-question
+```
+
+其他 agent 可以把 `SKILL.md` 作为主流程，把 `references/` 作为按需加载的方法卡。
 
 ### 如何使用
 
@@ -136,6 +155,9 @@ good-question/
     hamming-nielsen-research-taste.md
     peters-question-development.md
     orchestra-lenses.md
+    domain-brief-template.md
+    question-patterns.md
+    editor-desk-reject.md
 ```
 
 `SKILL.md` 是轻量主流程。`references/` 中的文件是按需加载的方法卡，避免把所有理论一次性塞进上下文。
@@ -150,15 +172,17 @@ good-question/
 4. **It can fail.** 有结果会削弱、修正或杀死它。
 5. **It is feasible enough.** 研究者能在现实约束下启动一个可信 pilot。
 6. **It teaches even when negative.** 即使主要假设不成立，也能产生有价值的边界、机制或方法信息。
+7. **It is grounded when context matters.** 如果问题依赖当前领域状态，它必须能追溯到公开来源或明确标注为推断。
 
-### 路线图
+### 成熟度边界
 
-下一步不只是加更多 prompt，而是继续沉淀更好的科研品味。
+当前版本已经把核心能力放进正式流程，而不是停留在待办清单：
 
-- `question-patterns.md`：基于公开来源、匿名化的弱问题到强问题转化模式。
-- `editor-desk-reject.md`：研究问题在进入正式评审前常见的失败原因。
-- `domain-brief-template.md`：在定制问题生成前，先做联网领域调研的临时流程。
-- 继续从主编分享、科学家博客、方法论书籍和研究训练材料中提炼方法卡。
+- `domain-brief-template.md`：需要领域定制时，先做公开来源调研和证据压缩。
+- `question-patterns.md`：把 topic、gap、method、benchmark 等弱形式改写成真正的问题。
+- `editor-desk-reject.md`：对最终候选问题做主编/评审视角的致命缺陷检查。
+
+后续扩展会继续增加新的公开来源方法卡，但当前版本已经可以作为正式 skill 使用。
 
 ### 理念
 
@@ -203,6 +227,7 @@ Weak research questions often fail before the experiment starts:
 | Mechanism question | Builds rival hypotheses and discriminating observations or experiments |
 | Proposal or grant | Stress-tests value, risk, audience, evidence path, and reviewer objections |
 | Stalled project | Reframes through boundary conditions, failure signals, and changed conditions |
+| Field-specific or current literature needed | Builds a compact domain brief before customizing questions |
 
 The output is usually one or more `Good Question Card`s:
 
@@ -232,6 +257,24 @@ This skill is not a prompt trick. It is built from recurring methodological advi
 | Research taste | Hamming; Nielsen [7][8] | Maintain important-problems lists, look for attackable openings, and cultivate long-term judgment |
 | Question development | Peters [9] | Treat question formation as an iterative creative process grounded in literature, uncertainty, and constraints |
 | Ideation lenses | Orchestra Research [10] | Use abstraction shifts, tension finding, boundary probing, what-changed analysis, analogy, and stakeholder rotation |
+| Source-grounded customization | Synthesis of the above sources | Build a domain brief before ideation when current field context matters |
+| Maturity gate | Synthesis of the above sources | Filter novelty-only, method-first, unfalsifiable, audience-free, and low-learning candidates |
+
+### Installation
+
+Codex:
+
+```bash
+git clone https://github.com/Rimagination/good-question.git ~/.codex/skills/good-question
+```
+
+Claude Code:
+
+```bash
+git clone https://github.com/Rimagination/good-question.git ~/.claude/skills/good-question
+```
+
+Other agents can use `SKILL.md` as the main workflow and `references/` as on-demand method cards.
 
 ### How To Use
 
@@ -293,6 +336,9 @@ good-question/
     hamming-nielsen-research-taste.md
     peters-question-development.md
     orchestra-lenses.md
+    domain-brief-template.md
+    question-patterns.md
+    editor-desk-reject.md
 ```
 
 `SKILL.md` keeps the main workflow lightweight. The `references/` cards are loaded only when needed, so the skill can use serious methodology without flooding the context window.
@@ -307,15 +353,17 @@ In this project, a good question should pass at least six checks:
 4. **It can fail.** Some result could weaken, revise, or kill the idea.
 5. **It is feasible enough.** A credible pilot can start under real constraints.
 6. **It teaches even when negative.** Failure still clarifies a boundary, mechanism, or method.
+7. **It is grounded when context matters.** If the question depends on the current state of a field, it should trace back to public sources or be clearly labeled as an inference.
 
-### Roadmap
+### Maturity Boundary
 
-The next improvement is not more prompts. It is better research taste.
+The current version moves the core capabilities into the actual workflow rather than leaving them as future plans:
 
-- `question-patterns.md`: public-source, anonymized patterns for turning weak questions into stronger ones.
-- `editor-desk-reject.md`: common reasons research questions fail before review.
-- `domain-brief-template.md`: a workflow for doing web-based, field-specific research before customizing question generation.
-- More source cards from editorials, scientist blogs, methodology books, and research training materials.
+- `domain-brief-template.md`: when field customization is needed, gather and compress public-source evidence first.
+- `question-patterns.md`: rewrite weak topics, gaps, methods, benchmarks, and applications into real questions.
+- `editor-desk-reject.md`: run a skeptical editor/reviewer-style fatal-flaw gate on final candidates.
+
+Future work can add more public-source method cards, but the current version is ready to use as a formal skill.
 
 ### Philosophy
 
