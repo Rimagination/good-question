@@ -19,36 +19,25 @@
 
 ## 中文
 
-> 一个把模糊兴趣打磨成清晰、重要、可检验科研问题的可迁移 agent skill。
+`good-question` 是一个帮助研究者打磨科研问题的 agent skill。
 
-`good-question` 是一个面向科研选题、问题选择、假设打磨、proposal 压力测试和论文角度重构的可迁移 agent skill。当前仓库按 Codex skill 的目录结构打包，但核心流程和 `references/` 方法卡都是普通 Markdown；只要一个 agent 能读取项目指令和参考文档，就可以把这套方法迁移过去。它不把“头脑风暴”理解为尽可能多地产生点子，而是把研究想法推进到一个更严肃的位置：重要、可行、可证伪、能被同行理解，也经得起评审攻击。
+它适合这样的时刻：你有一个方向、一个文献 gap、一个 proposal 摘要，或者一堆看起来都能做的想法，但还不确定哪个问题真正值得投入。它不会只给你一串灵感，而是逼近一个更好的研究问题：为什么重要，怎么被证据触及，哪些解释在竞争，什么结果会推翻它，下一步该做什么。
 
-### 为什么需要它
+### 你可以用它做什么
 
-很多弱研究问题并不是因为研究者不努力，而是因为问题本身还没有被锻炼出来：
-
-- 只是发现了一个 gap，却没有说明为什么这个 gap 重要。
-- 先爱上了某个方法，再去寻找一个问题。
-- 问题太宽，无法落到可观察证据。
-- 假设只有一个，没有竞争性解释。
-- proposal 看起来很完整，但说不清失败时能学到什么。
-- 研究方向跟着热点移动，却没有形成自己的判断力。
-
-`good-question` 的目标是补上这一层科研思维：帮助研究者先问清楚“什么问题值得做”，再讨论“怎么做”。
-
-### 它能做什么
-
-| 使用情境 | skill 会做什么 |
+| 你的状态 | 它会帮你做什么 |
 |---|---|
-| 只有宽泛兴趣 | 生成候选问题，并区分主题、问题、假设和项目 |
-| 有一个初步想法 | 评估重要性、可行性、可证伪性、决策分支和两周 pilot |
-| 只有文献 gap | 挑战文献背后的默认假设，而不是只补空白 |
-| 需要机制解释 | 拆出竞争性假设和关键判别观察或实验 |
-| 准备 proposal 或基金 | 用评审视角压力测试价值、风险、受众、证据路径和反对意见 |
-| 项目卡住了 | 通过边界条件、失败信号和条件变化重新定位问题 |
-| 需要领域定制或近期文献 | 先做 compact domain brief，再基于公开来源定制问题 |
+| 只有一个模糊兴趣 | 把兴趣拆成可比较的候选问题 |
+| 找到了文献 gap | 判断这个 gap 是否真的有理论或实践价值 |
+| 已经有一个想法 | 检查重要性、可行性、可证伪性和两周 pilot |
+| 想做机制解释 | 拆出竞争性假设和关键判别实验 |
+| 准备 proposal 或基金 | 模拟评审会攻击哪里，并给出修补方式 |
+| 方向依赖近期进展 | 先做公开来源的 domain brief，再定制问题 |
+| 项目卡住了 | 用边界条件、失败信号和条件变化重新定位问题 |
 
-最终输出通常不是一串灵感，而是一张或几张 `Good Question Card`：
+### 它会输出什么
+
+通常会得到一张或几张 `Good Question Card`，格式类似：
 
 ```markdown
 **Working title:** ...
@@ -63,21 +52,7 @@
 **Best next action:** ...
 ```
 
-### 方法论来源
-
-这个 skill 不是凭空发明的一套提示词。它整合的是一组被科学家、编辑、导师和研究方法论反复强调的共性动作；README 里把这些来源明确写出来，是因为对研究工具来说，方法本身也应该可追溯、可质疑、可替换。
-
-| 模式 | 来源 | 如何影响这个 skill |
-|---|---|---|
-| 问题选择 | Alon；Fischbach；Stanford Engineering [1][2][3] | 花更长时间选题，比较备选问题，用 decision tree 促进讨论，识别陷阱，接受有价值的风险，不要方法先行 |
-| 强推断 | Platt [4] | 生成竞争性假设，并设计能够区分这些假设的观察或实验 |
-| 问题化 | Alvesson & Sandberg [5] | 不只补 gap，而是挑战文献中被当成自然、稳定或已解决的默认假设 |
-| proposal 压力测试 | Heilmeier Catechism [6] | 追问想改变什么、谁在乎、为什么现在能做、成功是什么、风险在哪里 |
-| 科研品味 | Hamming；Nielsen [7][8] | 维护重要问题清单，识别现在可攻击的问题，并长期训练判断力 |
-| 问题发展 | Peters [9] | 把问题形成看成一个由文献、不确定性和约束共同塑造的迭代创造过程 |
-| 结构化发散 | Orchestra Research [10] | 使用抽象层级移动、张力寻找、边界探测、what changed、跨域类比和利益相关者轮换等 lenses |
-| 证据化定制 | 以上来源的综合流程 | 在需要领域定制时先形成 source-grounded domain brief，再进入问题生成 |
-| 成熟度闸门 | 以上来源的综合流程 | 用 editor-desk reject gate 过滤 novelty-only、method-first、无证伪点和无受众的问题 |
+重点不是把话说漂亮，而是让你能判断：这个问题值不值得继续推进。
 
 ### 安装
 
@@ -93,20 +68,18 @@ Claude Code:
 git clone https://github.com/Rimagination/good-question.git ~/.claude/skills/good-question
 ```
 
-其他 agent 可以把 `SKILL.md` 作为主流程，把 `references/` 作为按需加载的方法卡。
+其他 agent 也可以使用：把 `SKILL.md` 当作主流程，把 `references/` 当作按需加载的方法卡即可。
 
-### 如何使用
+### 快速开始
 
-在 Codex 中直接调用：
+最简单的用法：
 
 ```text
 用 $good-question 帮我把这个粗略想法打磨成一个好的科研问题：
 [你的想法]
 ```
 
-在其他 agent 中，可以把 `SKILL.md` 作为主流程，把 `references/` 作为按需加载的方法卡，再用同样的输入格式启动。
-
-更好的输入格式：
+如果你愿意提供更多上下文，效果会更好：
 
 ```text
 领域：
@@ -117,7 +90,7 @@ git clone https://github.com/Rimagination/good-question.git ~/.claude/skills/goo
 我最担心的问题：
 ```
 
-也可以这样使用：
+更多常用入口：
 
 ```text
 用 $good-question 压力测试这个 proposal，重点找评审最可能攻击的地方：
@@ -130,9 +103,46 @@ git clone https://github.com/Rimagination/good-question.git ~/.claude/skills/goo
 ```
 
 ```text
-用 $good-question 按 strong inference 拆出竞争性假设和关键实验：
-[我的假设]
+用 $good-question 先做一个基于公开来源的 domain brief，再帮我形成候选问题：
+[领域或方向]
 ```
+
+### 它如何工作
+
+`good-question` 的流程很简单，但会比较严格：
+
+1. 先判断你现在处在什么状态：模糊兴趣、文献 gap、已有想法、proposal，还是卡住的项目。
+2. 如果需要领域定制，就先做 compact domain brief，区分来源证据和推断。
+3. 用结构化 lenses 生成候选问题，但不把候选问题当成答案。
+4. 用重要性、可行性、可证伪性、证据杠杆和负结果价值来收敛。
+5. 把 topic、method、gap 这类弱形式改写成真正的问题。
+6. 用 editor-desk reject gate 做最后压力测试：如果评审会拒，先修到能站住。
+
+### 什么是好问题
+
+在这个项目里，一个 good question 至少要通过七个检查：
+
+1. **It matters.** 回答它会改变理论、方法、实践、政策或下一步研究。
+2. **It is specific.** 它不是一个宽泛主题，而是一个可被证据触及的问题。
+3. **It has rivals.** 至少存在两个或三个可能解释，而不是只有一个偏爱的假设。
+4. **It can fail.** 有结果会削弱、修正或杀死它。
+5. **It is feasible enough.** 研究者能在现实约束下启动一个可信 pilot。
+6. **It teaches even when negative.** 即使主要假设不成立，也能产生有价值的边界、机制或方法信息。
+7. **It is grounded when context matters.** 如果问题依赖当前领域状态，它必须能追溯到公开来源，或明确标注为推断。
+
+### 方法来源
+
+这个 skill 不是凭空写出来的一套 prompt。它把一些可靠来源中的科研思维动作沉淀成可复用流程：
+
+| 来源线索 | 这个项目吸收了什么 |
+|---|---|
+| Alon, Fischbach, Stanford Engineering [1][2][3] | 选问题是一种可训练能力，要比较问题、识别陷阱，不要方法先行 |
+| Platt [4] | 好问题应该能产生竞争性假设和判别实验 |
+| Alvesson & Sandberg [5] | 不要只找 gap，要挑战文献背后的默认假设 |
+| Heilmeier Catechism [6] | proposal 必须说清楚目标、受众、风险、成功标准和失败标准 |
+| Hamming, Nielsen [7][8] | 科研品味来自长期维护重要问题清单和可攻击机会 |
+| Peters [9] | 好问题常常来自对文献、不确定性和约束的反复重写 |
+| Orchestra Research [10] | 用结构化 lenses 发散，再用严格标准收束 |
 
 ### 项目结构
 
@@ -160,39 +170,13 @@ good-question/
     editor-desk-reject.md
 ```
 
-`SKILL.md` 是轻量主流程。`references/` 中的文件是按需加载的方法卡，避免把所有理论一次性塞进上下文。
+`SKILL.md` 是主流程。`references/` 是方法卡，只有在对应场景需要时才加载，避免一次性塞入太多理论。
 
-### 什么是好问题
+### 能力边界
 
-在这个项目里，一个 good question 至少要通过七个检查：
+`good-question` 可以帮你把问题变尖，但不会替你编造领域共识。需要当前领域信息时，它应该先基于公开来源形成 brief，再明确哪些判断来自证据，哪些只是推断。
 
-1. **It matters.** 回答它会改变理论、方法、实践、政策或下一步研究。
-2. **It is specific.** 它不是一个宽泛主题，而是一个可被证据触及的问题。
-3. **It has rivals.** 至少存在两个或三个可能解释，而不是只有一个偏爱的假设。
-4. **It can fail.** 有结果会削弱、修正或杀死它。
-5. **It is feasible enough.** 研究者能在现实约束下启动一个可信 pilot。
-6. **It teaches even when negative.** 即使主要假设不成立，也能产生有价值的边界、机制或方法信息。
-7. **It is grounded when context matters.** 如果问题依赖当前领域状态，它必须能追溯到公开来源或明确标注为推断。
-
-### 成熟度边界
-
-当前版本已经把核心能力放进正式流程，而不是停留在待办清单：
-
-- `domain-brief-template.md`：需要领域定制时，先做公开来源调研和证据压缩。
-- `question-patterns.md`：把 topic、gap、method、benchmark 等弱形式改写成真正的问题。
-- `editor-desk-reject.md`：对最终候选问题做主编/评审视角的致命缺陷检查。
-
-后续扩展会继续增加新的公开来源方法卡，但当前版本已经可以作为正式 skill 使用。
-
-### 理念
-
-`good-question` 是刻意严苛的。
-
-它应该让弱想法变得更弱，不是为了否定它，而是指出它具体失败在哪里。它也应该让强想法变得更锋利，不是装饰它，而是暴露它的假设、竞争解释、检验、风险和下一步行动。
-
-重点不是显得聪明。
-
-重点是提出一个足够好的问题，让下一次实验、下一篇论文、下一份 proposal，甚至下一年的工作，都有一个真实的方向。
+它也不会把每个想法都包装成“可做”。如果一个问题只有 novelty、没有受众、无法证伪，或者负结果学不到东西，它会建议重写、搁置或放弃。
 
 <p align="right"><a href="#good-question">回到顶部</a> | <a href="#english">English</a></p>
 
@@ -200,36 +184,25 @@ good-question/
 
 ## English
 
-> A portable agent skill for turning vague interests into sharp, important, testable scientific questions.
+`good-question` is a portable agent skill for sharpening research questions.
 
-`good-question` is a portable agent skill for research ideation, problem choice, hypothesis sharpening, proposal stress testing, and paper-angle reframing. This repository is packaged in the Codex skill layout, but the core workflow and `references/` cards are plain Markdown; any agent that can read project instructions and reference documents can adapt the methodology. It treats brainstorming as a discipline for making questions more important, tractable, falsifiable, defensible, and worth the next month or year of work.
+Use it when you have a direction, a literature gap, a proposal sketch, or several possible ideas, but you are not sure which question is worth real work. It does not simply list ideas. It helps turn a rough direction into a question with stakes, rivals, falsifiers, a feasible pilot, and a clear next move.
 
-### Why This Exists
+### What It Helps With
 
-Weak research questions often fail before the experiment starts:
-
-- A literature gap is named, but its importance is not established.
-- A method is chosen first, then a question is invented to fit it.
-- The question is too broad to touch with observable evidence.
-- Only one favored hypothesis is considered.
-- A proposal looks complete, but cannot explain what a negative result would teach.
-- The agenda follows trends without developing research taste.
-
-`good-question` helps researchers ask "what is worth doing?" before rushing to "how should we do it?"
-
-### What It Does
-
-| Situation | What the skill does |
+| Your situation | What it helps you do |
 |---|---|
-| Broad interest, no question | Generates candidate questions and separates topic, problem, hypothesis, and project |
-| Early idea | Evaluates importance, feasibility, falsifiability, decision branches, and a two-week pilot |
-| Literature gap | Challenges the assumptions behind the gap instead of merely filling it |
-| Mechanism question | Builds rival hypotheses and discriminating observations or experiments |
-| Proposal or grant | Stress-tests value, risk, audience, evidence path, and reviewer objections |
-| Stalled project | Reframes through boundary conditions, failure signals, and changed conditions |
-| Field-specific or current literature needed | Builds a compact domain brief before customizing questions |
+| Broad interest | Turn it into comparable candidate questions |
+| Literature gap | Decide whether the gap has real theoretical or practical value |
+| Early idea | Test importance, feasibility, falsifiability, and a two-week pilot |
+| Mechanism question | Build rival hypotheses and discriminating tests |
+| Proposal or grant | Find reviewer objections and repair the weak points |
+| Field depends on recent work | Build a public-source domain brief before question generation |
+| Stalled project | Reframe through boundaries, failure signals, and changed conditions |
 
-The output is usually one or more `Good Question Card`s:
+### What You Get
+
+The usual output is one or more `Good Question Card`s:
 
 ```markdown
 **Working title:** ...
@@ -244,21 +217,7 @@ The output is usually one or more `Good Question Card`s:
 **Best next action:** ...
 ```
 
-### Methodology
-
-This skill is not a prompt trick. It is built from recurring methodological advice in scientific problem choice, strong inference, problematization, proposal review, and research training. The sources are cited because a research tool should make its own intellectual scaffolding traceable.
-
-| Pattern | Sources | How it shapes the skill |
-|---|---|---|
-| Problem choice | Alon; Fischbach; Stanford Engineering [1][2][3] | Spend more time choosing the problem, compare alternatives, use decision trees, name traps, accept useful risk, and avoid method-first projects |
-| Strong inference | Platt [4] | Generate rival hypotheses and seek observations or experiments that discriminate between them |
-| Problematization | Alvesson & Sandberg [5] | Move beyond gap-spotting by challenging assumptions the literature treats as natural or settled |
-| Proposal stress test | Heilmeier Catechism [6] | Ask what changes, who cares, why now, what success means, and what risks remain |
-| Research taste | Hamming; Nielsen [7][8] | Maintain important-problems lists, look for attackable openings, and cultivate long-term judgment |
-| Question development | Peters [9] | Treat question formation as an iterative creative process grounded in literature, uncertainty, and constraints |
-| Ideation lenses | Orchestra Research [10] | Use abstraction shifts, tension finding, boundary probing, what-changed analysis, analogy, and stakeholder rotation |
-| Source-grounded customization | Synthesis of the above sources | Build a domain brief before ideation when current field context matters |
-| Maturity gate | Synthesis of the above sources | Filter novelty-only, method-first, unfalsifiable, audience-free, and low-learning candidates |
+The goal is not prettier wording. The goal is a better decision about whether the question deserves your time.
 
 ### Installation
 
@@ -276,18 +235,16 @@ git clone https://github.com/Rimagination/good-question.git ~/.claude/skills/goo
 
 Other agents can use `SKILL.md` as the main workflow and `references/` as on-demand method cards.
 
-### How To Use
+### Quick Start
 
-Call the skill directly in Codex:
+Basic use:
 
 ```text
 Use $good-question to sharpen this rough idea into a strong research question:
 [your idea]
 ```
 
-In other agents, use `SKILL.md` as the main workflow and the `references/` files as on-demand method cards, then start with the same input format.
-
-A better input format:
+Better input:
 
 ```text
 Field:
@@ -311,9 +268,46 @@ Use $good-question to turn this literature gap into a question with stronger the
 ```
 
 ```text
-Use $good-question to apply strong inference: build rival hypotheses and discriminating experiments for this claim:
-[hypothesis]
+Use $good-question to first build a public-source domain brief, then generate candidate questions:
+[field or direction]
 ```
+
+### How It Works
+
+The workflow is simple, but strict:
+
+1. Diagnose the starting point: broad interest, gap, idea, proposal, or stalled project.
+2. If field context matters, build a compact domain brief and separate evidence from inference.
+3. Generate candidates with structured lenses, but do not treat raw ideas as answers.
+4. Converge using importance, feasibility, falsifiability, evidence leverage, and downside learning.
+5. Rewrite weak forms such as topics, methods, benchmarks, and gaps into actual questions.
+6. Run an editor-desk reject gate before recommending finalists.
+
+### What Counts As A Good Question
+
+In this project, a good question should pass at least seven checks:
+
+1. **It matters.** Answering it changes theory, method, practice, policy, or the next research step.
+2. **It is specific.** It is not just a broad topic; evidence can touch it.
+3. **It has rivals.** At least two plausible explanations could compete.
+4. **It can fail.** Some result could weaken, revise, or kill the idea.
+5. **It is feasible enough.** A credible pilot can start under real constraints.
+6. **It teaches even when negative.** Failure still clarifies a boundary, mechanism, or method.
+7. **It is grounded when context matters.** If the question depends on the current state of a field, it traces back to public sources or is clearly labeled as inference.
+
+### Method Sources
+
+This is not just a prompt bundle. It turns research-method advice from reliable sources into reusable agent workflow:
+
+| Source line | What this project uses |
+|---|---|
+| Alon, Fischbach, Stanford Engineering [1][2][3] | Problem choice is trainable: compare questions, surface traps, and avoid method-first projects |
+| Platt [4] | Strong questions create rival hypotheses and discriminating tests |
+| Alvesson & Sandberg [5] | Move beyond gap-spotting by challenging assumptions |
+| Heilmeier Catechism [6] | Proposals need clear goals, audience, risks, success criteria, and failure criteria |
+| Hamming, Nielsen [7][8] | Research taste comes from important-problems lists and attackable openings |
+| Peters [9] | Good questions often emerge through iterative rewriting of literature, uncertainty, and constraints |
+| Orchestra Research [10] | Diverge with structured lenses, then converge with strict standards |
 
 ### Project Structure
 
@@ -341,41 +335,19 @@ good-question/
     editor-desk-reject.md
 ```
 
-`SKILL.md` keeps the main workflow lightweight. The `references/` cards are loaded only when needed, so the skill can use serious methodology without flooding the context window.
+`SKILL.md` is the main workflow. `references/` contains method cards that are loaded only when the task calls for them.
 
-### What Counts As A Good Question
+### Limits
 
-In this project, a good question should pass at least seven checks:
+`good-question` can make a question sharper, but it should not invent field consensus. When current field context matters, it should build a public-source brief first and label what is evidence versus inference.
 
-1. **It matters.** Answering it would change theory, method, practice, policy, or the next research step.
-2. **It is specific.** It is not just a broad topic; evidence can touch it.
-3. **It has rivals.** At least two plausible explanations could compete.
-4. **It can fail.** Some result could weaken, revise, or kill the idea.
-5. **It is feasible enough.** A credible pilot can start under real constraints.
-6. **It teaches even when negative.** Failure still clarifies a boundary, mechanism, or method.
-7. **It is grounded when context matters.** If the question depends on the current state of a field, it should trace back to public sources or be clearly labeled as an inference.
-
-### Maturity Boundary
-
-The current version moves the core capabilities into the actual workflow rather than leaving them as future plans:
-
-- `domain-brief-template.md`: when field customization is needed, gather and compress public-source evidence first.
-- `question-patterns.md`: rewrite weak topics, gaps, methods, benchmarks, and applications into real questions.
-- `editor-desk-reject.md`: run a skeptical editor/reviewer-style fatal-flaw gate on final candidates.
-
-Future work can add more public-source method cards, but the current version is ready to use as a formal skill.
-
-### Philosophy
-
-`good-question` is deliberately demanding. It should make weak ideas weaker by showing exactly where they fail, and make strong ideas sharper by exposing their assumptions, rivals, tests, risks, and next actions.
-
-The point is not to sound clever. The point is to ask a question good enough that the next experiment, paper, proposal, or year of work has somewhere real to go.
+It also should not make every idea look viable. If a candidate is only novel, has no audience, cannot fail, or teaches nothing when negative, it should be rewritten, parked, or discarded.
 
 <p align="right"><a href="#good-question">Back to top</a> | <a href="#zh-cn">中文</a></p>
 
 ## References / 参考文献
 
-The references below are cited as methodological sources for the skill, not as decoration. Journal articles use an APA-like format; web pages include a stable URL and retrieval date when no publication date is explicit.
+The references below are cited as methodological sources for the skill, not as decoration.
 
 1. Alon, U. (2009). How to choose a good scientific problem. *Molecular Cell, 35*(6), 726-728. https://doi.org/10.1016/j.molcel.2009.09.013
 2. Fischbach, M. A. (2024). Problem choice and decision trees in science and engineering. *Cell, 187*(10), 2363-2367. https://doi.org/10.1016/j.cell.2024.03.012
