@@ -6,9 +6,9 @@
 </picture>
 
 <p align="center">
-  <img alt="Agent Skill" src="https://img.shields.io/badge/Agent-Skill-1F5E4A?style=for-the-badge">
-  <img alt="Research Ideation" src="https://img.shields.io/badge/Research-Ideation-D9A441?style=for-the-badge">
-  <img alt="Methodology Cited" src="https://img.shields.io/badge/Methodology-Cited-6B8F71?style=for-the-badge">
+  <img alt="License MIT" src="https://img.shields.io/badge/License-MIT-1F5E4A?style=for-the-badge">
+  <img alt="Hosts Codex and Claude Code" src="https://img.shields.io/badge/Hosts-Codex%20%7C%20Claude%20Code-D9A441?style=for-the-badge">
+  <img alt="Status Active Development" src="https://img.shields.io/badge/Status-Active%20Development-6B8F71?style=for-the-badge">
 </p>
 
 <p align="center">
@@ -121,6 +121,7 @@
 good-question/
   SKILL.md
   README.md
+  LICENSE
   agents/
     openai.yaml
   assets/
@@ -277,6 +278,7 @@ Use $good-question to apply strong inference: build rival hypotheses and discrim
 good-question/
   SKILL.md
   README.md
+  LICENSE
   agents/
     openai.yaml
   assets/
