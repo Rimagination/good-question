@@ -164,7 +164,7 @@ good-question/
 
 ### 什么是好问题
 
-在这个项目里，一个 good question 至少要通过六个检查：
+在这个项目里，一个 good question 至少要通过七个检查：
 
 1. **It matters.** 回答它会改变理论、方法、实践、政策或下一步研究。
 2. **It is specific.** 它不是一个宽泛主题，而是一个可被证据触及的问题。
@@ -345,7 +345,7 @@ good-question/
 
 ### What Counts As A Good Question
 
-In this project, a good question should pass at least six checks:
+In this project, a good question should pass at least seven checks:
 
 1. **It matters.** Answering it would change theory, method, practice, policy, or the next research step.
 2. **It is specific.** It is not just a broad topic; evidence can touch it.
