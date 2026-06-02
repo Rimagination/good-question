@@ -25,6 +25,7 @@ Gather only enough evidence to make better question choices:
 
 **Scope:** ...
 **Source base:** 6-12 sources, with links or citations
+**Evidence ledger:** source-backed claims; inferences; unknowns to verify
 **What the field already knows:** ...
 **Live uncertainties:** ...
 **Dominant assumptions:** ...
@@ -44,9 +45,17 @@ After the brief:
 3. Pair speculative candidates with the evidence needed before committing.
 4. Feed the strongest candidates into `question-patterns.md`, then `editor-desk-reject.md`.
 
+## Non-Negotiables
+
+- If the user says "latest", "recent literature", "field-specific", or "deep research", include the `Domain Brief` heading before the Good Question Card.
+- Include an evidence ledger even when the brief is short.
+- Do not replace the brief with a prose paragraph of citations.
+- Do not call a question mature until speculative candidates name the evidence needed before commitment.
+
 ## Red Flags
 
 - The agent invents field consensus without sources.
 - The brief becomes a literature review instead of a decision aid.
 - Recent papers are listed but not converted into uncertainties or assumptions.
+- Sources appear in prose, but the answer never separates source-backed claims, inferences, and unknowns.
 - The question only follows a trend; it does not name what answering it would change.

@@ -37,7 +37,22 @@
 
 ### 它会输出什么
 
-通常会得到一张或几张 `Good Question Card`，格式类似：
+通常会得到一张或几张 `Good Question Card`。中文用户默认会得到类似这样的本地化卡片：
+
+```markdown
+**暂定题目：** ...
+**核心研究问题：** ...
+**为什么值得做：** ...
+**它挑战了什么默认假设：** ...
+**竞争性解释：** ...
+**关键判别证据或实验：** ...
+**什么结果会推翻它：** ...
+**两周内可做的 pilot：** ...
+**最强评审质疑：** ...
+**下一步动作：** ...
+```
+
+英文或跨团队使用时，也可以输出英文卡片：
 
 ```markdown
 **Working title:** ...
@@ -107,16 +122,29 @@ git clone https://github.com/Rimagination/good-question.git ~/.claude/skills/goo
 [领域或方向]
 ```
 
+```text
+用 $good-question 先做 Source Audit，检查这些文献是否真的支持我的 gap 和贡献声明：
+[你的 gap / 关键声明 / 文献列表]
+```
+
+### 不同领域怎么用
+
+如果你来自生态、遥感、AI4Science、社会科学、生物医学、人文解释型研究或工程系统，先看 [`docs/field-playbooks.md`](docs/field-playbooks.md)。
+
+它不是给 agent 的方法卡，而是给研究者的使用指南：每个领域应该提供什么上下文、常见弱问题是什么、好问题通常长什么样、评审最容易攻击哪里，以及该选择导师/评审/合作者/基金哪种模式。
+
 ### 它如何工作
 
 `good-question` 的流程很简单，但会比较严格：
 
 1. 先判断你现在处在什么状态：模糊兴趣、文献 gap、已有想法、proposal，还是卡住的项目。
-2. 如果需要领域定制，就先做 compact domain brief，区分来源证据和推断。
-3. 用结构化 lenses 生成候选问题，但不把候选问题当成答案。
-4. 用重要性、可行性、可证伪性、证据杠杆和负结果价值来收敛。
-5. 把 topic、method、gap 这类弱形式改写成真正的问题。
-6. 用 editor-desk reject gate 做最后压力测试：如果评审会拒，先修到能站住。
+2. 根据语境切换导师、评审、合作者或基金模式。
+3. 如果需要领域定制，就先做 compact domain brief，区分来源证据、推断和未知。
+4. 对生态、遥感、AI4Science、社会科学、生物医学等场景，按需加载轻量领域适配器。
+5. 用结构化 lenses 生成候选问题，但不把候选问题当成答案。
+6. 用重要性、可行性、可证伪性、证据杠杆和负结果价值来收敛。
+7. 把 topic、method、gap 这类弱形式改写成真正的问题。
+8. 用 editor-desk reject gate 做最后压力测试：如果评审会拒，先修到能站住。
 
 ### 什么是好问题
 
@@ -144,21 +172,43 @@ git clone https://github.com/Rimagination/good-question.git ~/.claude/skills/goo
 | Peters [9] | 好问题常常来自对文献、不确定性和约束的反复重写 |
 | Orchestra Research [10] | 用结构化 lenses 发散，再用严格标准收束 |
 
+### 质量与发布门禁
+
+这个项目把问题打磨当成可测试的流程，而不是一次性 prompt。发布前请看 [`docs/release-checklist.md`](docs/release-checklist.md)；贡献案例、领域指南或 source-audit eval 前请看 [`CONTRIBUTING.md`](CONTRIBUTING.md)。
+
+大范围发布至少应通过两类检查：`evals/pressure-cases.md` 检查是否能抵抗方法先行、gap 先行、空泛 impact 等常见失败；`evals/source-audit-cases.md` 检查引用是否真的支持对应 claim。
+
+发布前可以先运行结构门禁：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/verify-release.ps1 -Level broad
+```
+
 ### 项目结构
 
 ```text
 good-question/
   SKILL.md
   README.md
+  CHANGELOG.md
+  CONTRIBUTING.md
   LICENSE
   agents/
     openai.yaml
   assets/
     good-question-integrated-banner-1280.webp
     good-question-integrated-banner-1280.png
+  docs/
+    field-playbooks.md
+    release-checklist.md
+    wechat-promo.md
+  scripts/
+    verify-release.ps1
   references/
     alon-problem-choice.md
+    domain-adapters.md
     fischbach-problem-picking.md
+    source-audit.md
     platt-strong-inference.md
     problematization.md
     heilmeier-catechism.md
@@ -168,13 +218,24 @@ good-question/
     domain-brief-template.md
     question-patterns.md
     editor-desk-reject.md
+  examples/
+    README.md
+    worked-examples.md
+  evals/
+    README.md
+    pressure-cases.md
+    source-audit-cases.md
 ```
 
 `SKILL.md` 是主流程。`references/` 是方法卡，只有在对应场景需要时才加载，避免一次性塞入太多理论。
+`docs/field-playbooks.md` 是给真人用户看的领域使用指南，帮助不同学科的人把自己的问题喂给 skill。
+`examples/` 展示典型输入如何被打磨成更好的问题；`evals/` 用来检查以后修改有没有重新掉回“方法先行、gap 先行、空泛 impact”的坏习惯。
+`docs/release-checklist.md` 和 `CONTRIBUTING.md` 用来支撑更大范围的发布和维护。
 
 ### 能力边界
 
-`good-question` 可以帮你把问题变尖，但不会替你编造领域共识。需要当前领域信息时，它应该先基于公开来源形成 brief，再明确哪些判断来自证据，哪些只是推断。
+`good-question` 可以帮你把问题变尖，但它不是全知百科，不会替你编造领域共识。需要当前领域信息或本地知识不足时，它应该显式进入增强检索，先基于公开来源形成 brief，再明确哪些判断来自证据，哪些只是推断。
+它不会把“我没查到”写成“没人做过”，也不会在没有来源时声称某个 gap、共识或最新趋势已经成立。
 
 它也不会把每个想法都包装成“可做”。如果一个问题只有 novelty、没有受众、无法证伪，或者负结果学不到东西，它会建议重写、搁置或放弃。
 
@@ -218,6 +279,8 @@ The usual output is one or more `Good Question Card`s:
 ```
 
 The goal is not prettier wording. The goal is a better decision about whether the question deserves your time.
+
+If the user writes in Chinese, the skill now prefers a localized Chinese card with the same checks: stakes, rival explanations, discriminating evidence, falsifier, two-week pilot, reviewer objection, and next action.
 
 ### Installation
 
@@ -272,16 +335,29 @@ Use $good-question to first build a public-source domain brief, then generate ca
 [field or direction]
 ```
 
+```text
+Use $good-question to run a Source Audit before accepting this literature gap and contribution claim:
+[your gap / key claims / source list]
+```
+
+### Field Playbooks
+
+If you work in ecology, remote sensing, AI4Science, social science, biomedicine, humanities, or engineering systems, start with [`docs/field-playbooks.md`](docs/field-playbooks.md).
+
+It is a human-facing guide, not an agent method card. It shows what context to provide, common weak questions in each field, what stronger questions usually look like, likely reviewer objections, and which mode to choose.
+
 ### How It Works
 
 The workflow is simple, but strict:
 
 1. Diagnose the starting point: broad interest, gap, idea, proposal, or stalled project.
-2. If field context matters, build a compact domain brief and separate evidence from inference.
-3. Generate candidates with structured lenses, but do not treat raw ideas as answers.
-4. Converge using importance, feasibility, falsifiability, evidence leverage, and downside learning.
-5. Rewrite weak forms such as topics, methods, benchmarks, and gaps into actual questions.
-6. Run an editor-desk reject gate before recommending finalists.
+2. Infer the working mode: mentor, reviewer, collaborator, or grant.
+3. If field context matters, build a compact domain brief and label claims as source-backed, inference, or unknown.
+4. Load a lightweight domain adapter when ecology, remote sensing, AI4Science, social science, or biomedicine evidence norms matter.
+5. Generate candidates with structured lenses, but do not treat raw ideas as answers.
+6. Converge using importance, feasibility, falsifiability, evidence leverage, and downside learning.
+7. Rewrite weak forms such as topics, methods, benchmarks, and gaps into actual questions.
+8. Run an editor-desk reject gate before recommending finalists.
 
 ### What Counts As A Good Question
 
@@ -309,21 +385,50 @@ This is not just a prompt bundle. It turns research-method advice from reliable 
 | Peters [9] | Good questions often emerge through iterative rewriting of literature, uncertainty, and constraints |
 | Orchestra Research [10] | Diverge with structured lenses, then converge with strict standards |
 
+### Quality Gates
+
+This project treats question-sharpening as a testable workflow, not a one-off prompt. Before releasing, use [`docs/release-checklist.md`](docs/release-checklist.md). Before contributing cases, field guidance, or source-audit tests, use [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+Broad releases should pass both `evals/pressure-cases.md`, which checks resistance to method-first, gap-first, and vague-impact failures, and `evals/source-audit-cases.md`, which checks whether citations support the claims attached to them.
+
+Before release, run the structural gate:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/verify-release.ps1 -Level broad
+```
+
+Mature-product work has a stricter operating model:
+
+- Read [`docs/mature-release-operating-model.md`](docs/mature-release-operating-model.md) before calling the skill mature.
+- Record the readiness decision with [`evals/mature-release-run-template.md`](evals/mature-release-run-template.md).
+- Run `powershell -ExecutionPolicy Bypass -File scripts/verify-release.ps1 -Level mature`; if the gate fails, keep the release labeled broad/public beta.
+
 ### Project Structure
 
 ```text
 good-question/
   SKILL.md
   README.md
+  CHANGELOG.md
+  CONTRIBUTING.md
   LICENSE
   agents/
     openai.yaml
   assets/
     good-question-integrated-banner-1280.webp
     good-question-integrated-banner-1280.png
+  docs/
+    field-playbooks.md
+    mature-release-operating-model.md
+    release-checklist.md
+    wechat-promo.md
+  scripts/
+    verify-release.ps1
   references/
     alon-problem-choice.md
+    domain-adapters.md
     fischbach-problem-picking.md
+    source-audit.md
     platt-strong-inference.md
     problematization.md
     heilmeier-catechism.md
@@ -333,13 +438,26 @@ good-question/
     domain-brief-template.md
     question-patterns.md
     editor-desk-reject.md
+  examples/
+    case-notes.md
+    README.md
+    worked-examples.md
+  evals/
+    mature-release-run-template.md
+    README.md
+    pressure-cases.md
+    source-audit-cases.md
 ```
 
 `SKILL.md` is the main workflow. `references/` contains method cards that are loaded only when the task calls for them.
+`docs/field-playbooks.md` is the human-facing guide for using the skill well in different disciplines.
+`examples/` shows compact worked examples; `evals/` contains pressure cases for regression testing future edits.
+`docs/release-checklist.md` and `CONTRIBUTING.md` support broader release and maintenance.
 
 ### Limits
 
-`good-question` can make a question sharper, but it should not invent field consensus. When current field context matters, it should build a public-source brief first and label what is evidence versus inference.
+`good-question` can make a question sharper, but it is not an omniscient encyclopedia and should not invent field consensus. When current field context matters or local knowledge is insufficient, it should explicitly enter enhanced retrieval, build a public-source brief first, and label what is evidence versus inference.
+It should not turn "I did not find work on X" into "nobody has studied X", and it should not assert a literature gap, consensus, or latest trend without sources.
 
 It also should not make every idea look viable. If a candidate is only novel, has no audience, cannot fail, or teaches nothing when negative, it should be rewritten, parked, or discarded.
 
