@@ -1,6 +1,6 @@
 ---
 name: good-question
-description: Use when a researcher needs to discover, sharpen, evaluate, or stress-test research questions, hypotheses, project ideas, thesis topics, paper angles, grant directions, or stalled research using scientific problem choice, assumption-challenging, strong inference, boundary probing, research taste, and proposal stress-test frameworks.
+description: Use when a researcher is choosing, framing, refining, or stress-testing a research question, hypothesis, thesis topic, project idea, grant direction, paper angle, or stalled research direction.
 ---
 
 # Good Question
@@ -33,6 +33,19 @@ Infer the mode from the user request, or use the named mode if the user asks for
 | Reviewer | The user asks to stress-test, criticize, or find weaknesses | Lead with the strongest rejection risks and repair paths |
 | Collaborator | The user wants to act soon or has data/resources ready | Convert the best question into a two-week pilot and decision gate |
 | Grant | The user is writing a proposal, fund, or pitch | Emphasize audience, milestones, risk, success criteria, and kill criteria |
+
+## Boundary With good-story
+
+Use `good-question` to decide what should be asked, tested, falsified, or killed. Use `good-story`, when it is available, to decide how existing evidence, figures, drafts, abstracts, or results should be organized into an honest scientific narrative.
+
+This boundary is a routing preference, not a capability reduction. If `good-story` is not available, `good-question` may still handle story-adjacent requests such as paper angles, proposal pitches, significance framing, abstract direction, or high-impact positioning. In that fallback mode, keep the answer question-first: clarify the claim, stake, evidence, assumptions, falsifier, reviewer risk, and next test. Label full narrative, figure-order, or prose-craft advice as provisional rather than pretending this skill is a complete writing-story framework.
+
+For ambiguous requests:
+
+- If the research question, hypothesis, stake, or feasible test is unclear, stay in `good-question` first.
+- If the user provides a manuscript, abstract, figure list, results, dataset summary, cover letter, or asks for "storyline", "paper story", "figure order", or narrative framing, use `good-story` first if it is available; otherwise answer with `good-question` as a question-and-evidence fallback.
+- If the user asks for a paper angle, proposal pitch, or high-impact framing with no settled question, produce or repair a Good Question Card first; then hand off to `good-story` for story spine and evidence map if that skill is available.
+- Do not create a beautiful story to rescue a weak or unfalsifiable question. Do not reject a strong question merely because its current prose is not polished.
 
 ## Human Onboarding
 
@@ -77,7 +90,7 @@ Choose the closest user state and load only the reference cards that help.
 | Has a broad area but no question | Challenge assumptions and generate question variants | `references/problematization.md`, `references/orchestra-lenses.md`, `references/fischbach-problem-picking.md` |
 | Has a candidate idea | Score interest, feasibility, falsifiability, and decision branches | `references/alon-problem-choice.md`, `references/fischbach-problem-picking.md` |
 | Needs mechanism or experiment design | Generate competing hypotheses and discriminating tests | `references/platt-strong-inference.md` |
-| Has a proposal, grant, or paper angle | Stress-test value, risk, and evaluation | `references/heilmeier-catechism.md` |
+| Has a proposal, grant, or paper angle | Stress-test value, risk, and evaluation; hand off to story framing only when another story skill is available and the question is already defensible | `references/heilmeier-catechism.md` |
 | Project is stuck or failed | Reframe through boundary conditions, what changed, and cloud pivots | `references/alon-problem-choice.md`, `references/orchestra-lenses.md` |
 | Needs current or field-specific grounding | Build a compact evidence brief before ideation | `references/domain-brief-template.md` |
 | Has existing data but no thesis question | Convert resources into comparable, falsifiable options | `references/alon-problem-choice.md`, `references/fischbach-problem-picking.md`, `references/question-patterns.md` |
