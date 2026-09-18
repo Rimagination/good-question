@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- Contribution-check card separating presentation defects from substantive value objections, with four non-exhaustive lenses and an explicit closest-work comparison.
+- Four pressure cases covering significance objections, computational contributions, incomplete exploration and polishing-only scope.
+
+### Changed
+
+- Candidate rejection now distinguishes supported failure from unresolved evidence; English and Chinese question cards expose the status of the claimed contribution.
+
 ## v0.2.0 - 2026-07-01
 
 ### Added
