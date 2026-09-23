@@ -14,6 +14,7 @@ Help a researcher turn a vague interest, literature gap, rough idea, failed proj
 - Treat novelty as insufficient unless the question also matters.
 - Separate a topic, a problem, a hypothesis, and a project plan.
 - Make hidden assumptions explicit before proposing methods.
+- Treat first-principles thinking as a calibration lens for stakes, assumptions, rivals, falsifiers, and evidence boundaries; do not let it override source audit, field evidence, or competing hypotheses.
 - Ask at most one short clarifying question if the field, constraint, or existing idea is missing; otherwise proceed with stated assumptions.
 - If the user writes in Chinese, respond in Chinese unless they ask otherwise.
 - When local knowledge is insufficient for field-specific facts, explicitly enter enhanced retrieval (增强检索) before ideation: name what is missing, gather evidence with appropriate research or web tools, build a compact domain brief, then form questions.
@@ -89,6 +90,7 @@ Choose the closest user state and load only the reference cards that help.
 | No clear direction | Build an important-problems list and scan messy fields | `references/hamming-nielsen-research-taste.md`, `references/peters-question-development.md` |
 | Has a broad area but no question | Challenge assumptions and generate question variants | `references/problematization.md`, `references/orchestra-lenses.md`, `references/fischbach-problem-picking.md` |
 | Has a candidate idea | Score interest, feasibility, falsifiability, and decision branches | `references/alon-problem-choice.md`, `references/fischbach-problem-picking.md` |
+| Asks for first principles, fundamentals, or possible rule conflicts | Use first principles as a compatibility check, not a master override | `references/first-principles-lens.md`, plus the relevant method card it must not bypass |
 | Needs mechanism or experiment design | Generate competing hypotheses and discriminating tests | `references/platt-strong-inference.md` |
 | Has a proposal, grant, or paper angle | Stress-test value, risk, and evaluation; hand off to story framing only when another story skill is available and the question is already defensible | `references/heilmeier-catechism.md` |
 | Project is stuck or failed | Reframe through boundary conditions, what changed, and cloud pivots | `references/alon-problem-choice.md`, `references/orchestra-lenses.md` |
@@ -135,6 +137,7 @@ When a source-grounded claim is decisive, or when the user asks for latest liter
 Generate 5-10 candidate questions using a mix of these lenses:
 
 - Importance and tractability: Which problems are both consequential and attackable?
+- First-principles compatibility: Which constraints are truly fundamental, which are assumptions, and which need evidence?
 - Assumption challenge: What does the literature treat as obvious, fixed, or outside scope?
 - Strong inference: Which competing hypotheses could explain the same phenomenon?
 - Boundary probing: Where do popular methods, theories, or datasets fail?
@@ -217,6 +220,7 @@ Load reference cards on demand:
 
 - `references/alon-problem-choice.md`: use for choosing among possible problems, evaluating taste, and handling stuck projects.
 - `references/fischbach-problem-picking.md`: use for problem-picking, decision trees, method-first traps, and choosing before committing.
+- `references/first-principles-lens.md`: use when the user asks for first principles, fundamentals, root assumptions, or when method cards appear to conflict; it calibrates the workflow but must not bypass source audit, domain evidence, problematization, or strong inference.
 - `references/platt-strong-inference.md`: use for mechanism questions, competing hypotheses, decisive experiments, and falsification.
 - `references/problematization.md`: use for literature-gap work, theory papers, and assumption-challenging questions.
 - `references/heilmeier-catechism.md`: use for grants, proposals, project pitches, and reviewer-style stress tests.
@@ -231,7 +235,7 @@ Load reference cards on demand:
 
 ## Examples And Evals
 
-Use `evals/pressure-cases.md` when editing this skill or checking whether it still resists common failures: method-first novelty, gap-without-stake, grant grandiosity, Chinese thesis-topic drift, onboarding drift, and unsupported current-field claims. Use `evals/source-audit-cases.md` before broad releases to check whether citations truly support the claims attached to them.
+Use `evals/pressure-cases.md` when editing this skill or checking whether it still resists common failures: method-first novelty, gap-without-stake, grant grandiosity, Chinese thesis-topic drift, onboarding drift, and unsupported current-field claims. Use `evals/source-audit-cases.md` before broad releases to check whether citations truly support the claims attached to them. Use `evals/first-principles-literature-cases.md` when changing first-principles behavior or when checking that first-principles reasoning remains compatible with source audit, problematization, strong inference, and domain adapters.
 
 ## Response Shape
 

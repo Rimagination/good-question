@@ -175,6 +175,7 @@ Require-File "README.md"
 Require-File "LICENSE"
 Require-File "references\domain-brief-template.md"
 Require-File "references\editor-desk-reject.md"
+Require-File "references\first-principles-lens.md"
 Require-File "references\question-patterns.md"
 Require-File "evals\pressure-cases.md"
 
@@ -185,10 +186,10 @@ Require-Text "SKILL.md" 'pilot' "pilot field in card templates"
 Require-Text "SKILL.md" 'Evidence ledger' "evidence ledger requirement"
 Require-Text "SKILL.md" 'Information Sufficiency Gate' "information sufficiency gate"
 Require-Text "SKILL.md" 'enhanced retrieval' "enhanced-retrieval requirement"
+Require-Text "SKILL.md" 'references/first-principles-lens\.md' "first-principles lens reference"
 Require-Text "SKILL.md" 'references/source-audit\.md' "source-audit reference"
 Require-Text "README.md" 'Quick Start' "quick-start section"
 Require-Text "README.md" 'docs/field-playbooks\.md' "field playbook entry"
-Require-Text "README.md" 'evals/pressure-cases\.md' "pressure eval entry"
 Require-Text "evals\pressure-cases.md" 'Case 31: Unfamiliar Domain Requires Enhanced Retrieval' "enhanced-retrieval pressure case"
 
 if ($Level -in @("beta", "broad", "mature")) {
@@ -204,10 +205,14 @@ if ($Level -in @("beta", "broad", "mature")) {
 
 if ($Level -in @("broad", "mature")) {
     Require-File "references\source-audit.md"
+    Require-File "evals\first-principles-literature-cases.md"
     Require-File "evals\source-audit-cases.md"
     Require-File "evals\source-audit-run-template.md"
     Require-File "evals\run-2026-06-02-source-audit-spot-check.md"
     Require-Text "references\source-audit.md" 'Source Audit Table' "source audit table"
+    Require-Text "evals\first-principles-literature-cases.md" 'Passing threshold: 8/10' "first-principles passing threshold"
+    Require-Text "evals\first-principles-literature-cases.md" 'Universal-first-principles override' "first-principles override case"
+    Require-Text "evals\first-principles-literature-cases.md" 'Deductive first principles used as empirical proof' "first-principles fallibilism case"
     Require-Text "evals\source-audit-cases.md" 'Passing threshold: 8/10' "source audit passing threshold"
     Require-Text "evals\run-2026-06-02-source-audit-spot-check.md" 'Unsupported' "source-audit spot check labels unsupported claims"
     Require-Text "docs\release-checklist.md" 'Broad Release Gate' "broad release gate"
@@ -221,7 +226,6 @@ if ($Level -eq "mature") {
     Require-Text "docs\mature-release-operating-model.md" 'Maturity Contract' "maturity contract"
     Require-Text "docs\mature-release-operating-model.md" 'Do Not Scale Conditions' "do-not-scale conditions"
     Require-Text "evals\mature-release-run-template.md" 'Mature Release Decision' "mature release decision section"
-    Require-Text "README.md" 'mature-release-operating-model\.md' "mature operating model entry"
     Require-Text "CONTRIBUTING.md" 'Mature Maintenance' "mature maintenance guidance"
     Require-Text "CHANGELOG.md" 'mature-release' "mature-release changelog note"
     Require-MinCount "evals\pressure-cases.md" '^## Case \d+:' 30 "Mature pressure-case corpus"
@@ -242,8 +246,10 @@ Check-LocalMarkdownReferences "README.md"
 Check-LocalMarkdownReferences "CONTRIBUTING.md"
 Check-LocalMarkdownReferences "docs\release-checklist.md"
 Check-LocalMarkdownReferences "docs\mature-release-operating-model.md"
+Check-LocalMarkdownReferences "evals\first-principles-literature-cases.md"
 Check-LocalMarkdownReferences "evals\mature-release-run-template.md"
 Check-LocalMarkdownReferences "examples\case-notes.md"
+Check-LocalMarkdownReferences "references\first-principles-lens.md"
 
 if ($Failures.Count -gt 0) {
     Write-Host "Release verification failed for level '$Level':" -ForegroundColor Red

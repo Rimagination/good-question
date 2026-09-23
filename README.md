@@ -19,25 +19,25 @@
 
 ## 中文
 
-`good-question` 是一个帮助研究者打磨科研问题的 agent skill。
+`good-question` 是一个帮助研究者梳理和打磨科研问题的 agent skill。
 
-它适合这样的时刻：你有一个方向、一个文献 gap、一个 proposal 摘要，或者一堆看起来都能做的想法，但还不确定哪个问题真正值得投入。它不会只给你一串灵感，而是逼近一个更好的研究问题：为什么重要，怎么被证据触及，哪些解释在竞争，什么结果会推翻它，下一步该做什么。
+它适合这样的时刻：你有一个方向、一个文献空白、一个 proposal 摘要，或者一堆看起来都能做的想法，但还不确定哪个问题真正值得投入。它不会只给你一串灵感，而是帮你把想法整理成更可靠的研究问题：为什么重要，怎样用证据检验，可能有哪些解释，什么结果会推翻它，下一步该做什么。
 
 ### 你可以用它做什么
 
 | 你的状态 | 它会帮你做什么 |
 |---|---|
 | 只有一个模糊兴趣 | 把兴趣拆成可比较的候选问题 |
-| 找到了文献 gap | 判断这个 gap 是否真的有理论或实践价值 |
-| 已经有一个想法 | 检查重要性、可行性、可证伪性和两周 pilot |
+| 找到了文献空白 | 判断这个空白是否真的有理论或实践价值 |
+| 已经有一个想法 | 检查重要性、可行性、可证伪性和两周内可做的初步验证 |
 | 想做机制解释 | 拆出竞争性假设和关键判别实验 |
 | 准备 proposal 或基金 | 模拟评审会攻击哪里，并给出修补方式 |
-| 方向依赖近期进展 | 先做公开来源的 domain brief，再定制问题 |
+| 方向依赖近期进展 | 先整理公开来源的领域简报，再定制问题 |
 | 项目卡住了 | 用边界条件、失败信号和条件变化重新定位问题 |
 
 ### 它会输出什么
 
-通常会得到一张或几张 `Good Question Card`。中文用户默认会得到类似这样的本地化卡片：
+通常会得到一张或几张“好问题卡”。中文用户默认会得到类似这样的本地化卡片：
 
 ```markdown
 **暂定题目：** ...
@@ -47,7 +47,7 @@
 **竞争性解释：** ...
 **关键判别证据或实验：** ...
 **什么结果会推翻它：** ...
-**两周内可做的 pilot：** ...
+**两周内可做的初步验证：** ...
 **最强评审质疑：** ...
 **下一步动作：** ...
 ```
@@ -86,7 +86,7 @@ git clone https://github.com/Rimagination/good-question.git ~/.claude/skills/goo
 当前想法或困惑：
 已有数据 / 方法 / 资源：
 时间限制：
-目标：论文 / 开题 / 基金 / pilot / rebuttal
+目标：论文 / 开题 / 基金 / 初步验证 / rebuttal
 我最担心的问题：
 ```
 
@@ -98,18 +98,18 @@ git clone https://github.com/Rimagination/good-question.git ~/.claude/skills/goo
 ```
 
 ```text
-用 $good-question 把这个文献 gap 改写成更有理论贡献的问题：
-[gap 描述]
+用 $good-question 把这个文献空白改写成更有理论贡献的问题：
+[空白描述]
 ```
 
 ```text
-用 $good-question 先做一个基于公开来源的 domain brief，再帮我形成候选问题：
+用 $good-question 先做一个基于公开来源的领域简报，再帮我形成候选问题：
 [领域或方向]
 ```
 
 ```text
-用 $good-question 先做 Source Audit，检查这些文献是否真的支持我的 gap 和贡献声明：
-[你的 gap / 关键声明 / 文献列表]
+用 $good-question 先做来源核查，检查这些文献是否真的支持我的文献空白和贡献声明：
+[你的文献空白 / 关键声明 / 文献列表]
 ```
 
 ### 不同领域怎么用
@@ -122,58 +122,59 @@ git clone https://github.com/Rimagination/good-question.git ~/.claude/skills/goo
 
 `good-question` 的流程很简单，但会比较严格：
 
-1. 先判断你现在处在什么状态：模糊兴趣、文献 gap、已有想法、proposal，还是卡住的项目。
+1. 先判断你现在处在什么状态：模糊兴趣、文献空白、已有想法、proposal，还是卡住的项目。
 2. 根据语境切换导师、评审、合作者或基金模式。
-3. 如果需要领域定制，就先做 compact domain brief，区分来源证据、推断和未知。
+3. 如果需要领域定制，就先整理简明的领域简报，区分来源证据、推断和未知。
 4. 对生态、遥感、AI4Science、社会科学、生物医学等场景，按需加载轻量领域适配器。
-5. 用结构化 lenses 生成候选问题，但不把候选问题当成答案。
-6. 用重要性、可行性、可证伪性、证据杠杆和负结果价值来收敛。
-7. 把 topic、method、gap 这类弱形式改写成真正的问题。
-8. 用 editor-desk reject gate 做最后压力测试：如果评审会拒，先修到能站住。
+5. 如果用户要求第一性原理或规则冲突判断，就把第一性原理当作校准工具：检查问题价值、关键假设、竞争解释、可推翻条件和证据边界，但不绕过来源核查、领域证据或竞争性假设。
+6. 用结构化视角生成候选问题，但不把候选问题直接当成答案。
+7. 用重要性、可行性、可证伪性、证据杠杆和负结果价值来收敛。
+8. 把“主题、方法、文献空白”这类比较弱的表述改写成真正的问题。
+9. 做最后的评审式压力测试：如果评审会拒，先修到能站住。
 
 ### 什么是好问题
 
 在这个项目里，一个 good question 至少要通过七个检查：
 
-1. **It matters.** 回答它会改变理论、方法、实践、政策或下一步研究。
-2. **It is specific.** 它不是一个宽泛主题，而是一个可被证据触及的问题。
-3. **It has rivals.** 至少存在两个或三个可能解释，而不是只有一个偏爱的假设。
-4. **It can fail.** 有结果会削弱、修正或杀死它。
-5. **It is feasible enough.** 研究者能在现实约束下启动一个可信 pilot。
-6. **It teaches even when negative.** 即使主要假设不成立，也能产生有价值的边界、机制或方法信息。
-7. **It is grounded when context matters.** 如果问题依赖当前领域状态，它必须能追溯到公开来源，或明确标注为推断。
+1. **有意义。** 回答它会改变理论、方法、实践、政策或下一步研究。
+2. **够具体。** 它不是一个宽泛主题，而是一个可被证据触及的问题。
+3. **有竞争解释。** 至少存在两个或三个可能解释，而不是只有一个偏爱的假设。
+4. **可以被推翻。** 有结果会削弱、修正或杀死它。
+5. **现实中能启动。** 研究者能在现实约束下启动一个可信的初步验证。
+6. **负结果也有价值。** 即使主要假设不成立，也能产生有价值的边界、机制或方法信息。
+7. **需要时有依据。** 如果问题依赖当前领域状态，它必须能追溯到公开来源，或明确标注为推断。
+
+### 第一性原理如何辅助项目
+
+第一性原理在 `good-question` 里不是一套新的总规则，而是帮助用户把研究问题拆回最基本的判断：为什么值得做，哪些是假设，哪些有证据，什么结果会推翻它，下一步最小测试是什么。
+
+它主要辅助三件事：
+
+- **避免问题过大：** 把宏大的方向收束成可以用证据检验的具体问题。
+- **看清隐藏假设：** 区分真正的约束、可争辩的假设和已经有来源支持的判断。
+- **保留不同解释：** 要求保留竞争性解释和可能失败的测试，而不是只给出一个看似顺畅的答案。
+
+这和项目现有体系并不冲突：科学哲学文献指出，不同学科中的第一性原理地位并不完全相同 [11][12]，原则推理也需要保留可错性和经验校验 [13]；因此它会配合强推理、问题化和来源核查使用，而不是替代它们 [4][5][14]。
 
 ### 方法来源
 
-这个 skill 不是凭空写出来的一套 prompt。它把一些可靠来源中的科研思维动作沉淀成可复用流程：
+这个 skill 不是凭空写出来的一套提示词。它把一些可靠来源中的科研思维动作沉淀成可复用流程：
 
 | 来源线索 | 这个项目吸收了什么 |
 |---|---|
 | Alon, Fischbach, Stanford Engineering [1][2][3] | 选问题是一种可训练能力，要比较问题、识别陷阱，不要方法先行 |
 | Platt [4] | 好问题应该能产生竞争性假设和判别实验 |
-| Alvesson & Sandberg [5] | 不要只找 gap，要挑战文献背后的默认假设 |
+| Alvesson & Sandberg [5] | 不要只找文献空白，要挑战文献背后的默认假设 |
 | Heilmeier Catechism [6] | proposal 必须说清楚目标、受众、风险、成功标准和失败标准 |
 | Hamming, Nielsen [7][8] | 科研品味来自长期维护重要问题清单和可攻击机会 |
 | Peters [9] | 好问题常常来自对文献、不确定性和约束的反复重写 |
-| Orchestra Research [10] | 用结构化 lenses 发散，再用严格标准收束 |
-| 第一性原理相关文献 [11][12][13][14] | 回到基本约束、厘清关键假设，并结合证据、领域规范和竞争性解释检验研究判断 |
-
-### 质量与发布门禁
-
-这个项目把问题打磨当成可测试的流程，而不是一次性 prompt。发布前请看 [`docs/release-checklist.md`](docs/release-checklist.md)；贡献案例、领域指南或 source-audit eval 前请看 [`CONTRIBUTING.md`](CONTRIBUTING.md)。
-
-大范围发布至少应通过两类检查：`evals/pressure-cases.md` 检查是否能抵抗方法先行、gap 先行、空泛 impact 等常见失败；`evals/source-audit-cases.md` 检查引用是否真的支持对应 claim。
-
-发布前可以先运行结构门禁：
-
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts/verify-release.ps1 -Level broad
-```
+| Orchestra Research [10] | 用结构化视角发散，再用严格标准收束 |
+| First-principles literature [11][12][13][14] | 回到基本约束、厘清关键假设，并结合证据、领域规范和竞争性解释检验研究判断 |
 
 ### 能力边界
 
-`good-question` 可以帮你把问题变尖，但它不是全知百科，不会替你编造领域共识。需要当前领域信息或本地知识不足时，它应该显式进入增强检索，先基于公开来源形成 brief，再明确哪些判断来自证据，哪些只是推断。
-它不会把“我没查到”写成“没人做过”，也不会在没有来源时声称某个 gap、共识或最新趋势已经成立。
+`good-question` 可以帮你把研究问题整理得更清楚、更可检验，但它不是全知百科，不会替你编造领域共识。需要当前领域信息或本地知识不足时，它应该显式进入增强检索，先基于公开来源形成简报，再明确哪些判断来自证据，哪些只是推断。
+它不会把“我没查到”写成“没人做过”，也不会在没有来源时声称某个文献空白、共识或最新趋势已经成立。
 
 它也不会把每个想法都包装成“可做”。如果一个问题只有 novelty、没有受众、无法证伪，或者负结果学不到东西，它会建议重写、搁置或放弃。
 
@@ -290,10 +291,11 @@ The workflow is simple, but strict:
 2. Infer the working mode: mentor, reviewer, collaborator, or grant.
 3. If field context matters, build a compact domain brief and label claims as source-backed, inference, or unknown.
 4. Load a lightweight domain adapter when ecology, remote sensing, AI4Science, social science, or biomedicine evidence norms matter.
-5. Generate candidates with structured lenses, but do not treat raw ideas as answers.
-6. Converge using importance, feasibility, falsifiability, evidence leverage, and downside learning.
-7. Rewrite weak forms such as topics, methods, benchmarks, and gaps into actual questions.
-8. Run an editor-desk reject gate before recommending finalists.
+5. If the user asks for first principles or rule conflicts, use first principles as a calibration layer: check stakes, assumptions, rivals, falsifiers, and evidence boundaries without bypassing source audit, field evidence, or competing hypotheses.
+6. Generate candidates with structured lenses, but do not treat raw ideas as answers.
+7. Converge using importance, feasibility, falsifiability, evidence leverage, and downside learning.
+8. Rewrite weak forms such as topics, methods, benchmarks, and gaps into actual questions.
+9. Run an editor-desk reject gate before recommending finalists.
 
 ### What Counts As A Good Question
 
@@ -306,6 +308,18 @@ In this project, a good question should pass at least seven checks:
 5. **It is feasible enough.** A credible pilot can start under real constraints.
 6. **It teaches even when negative.** Failure still clarifies a boundary, mechanism, or method.
 7. **It is grounded when context matters.** If the question depends on the current state of a field, it traces back to public sources or is clearly labeled as inference.
+
+### How First Principles Helps The Project
+
+In `good-question`, first-principles thinking is not a new master rule. It helps users reduce a research idea to the basic judgments that matter: why it is worth doing, which claims are assumptions, which claims have evidence, what would overturn the idea, and what the smallest useful next test would be.
+
+It helps the project in three practical ways:
+
+- **Keeps questions lean:** turns broad directions into specific questions evidence can touch.
+- **Exposes hidden assumptions:** separates real constraints, contestable assumptions, and source-backed claims.
+- **Preserves alternatives:** keeps rival explanations and falsifying tests in view instead of producing one elegant answer.
+
+This fits the existing system: first principles vary across scientific fields [11][12], and principle-based reasoning still needs fallibilism and empirical checks [13]. So this project uses first principles alongside strong inference, problematization, and source audit, not as a replacement for them [4][5][14].
 
 ### Method Sources
 
@@ -321,24 +335,6 @@ This is not just a prompt bundle. It turns research-method advice from reliable 
 | Peters [9] | Good questions often emerge through iterative rewriting of literature, uncertainty, and constraints |
 | Orchestra Research [10] | Diverge with structured lenses, then converge with strict standards |
 | First-principles literature [11][12][13][14] | Return to basic constraints, clarify key assumptions, and test research judgments against evidence, disciplinary norms, and competing explanations |
-
-### Quality Gates
-
-This project treats question-sharpening as a testable workflow, not a one-off prompt. Before releasing, use [`docs/release-checklist.md`](docs/release-checklist.md). Before contributing cases, field guidance, or source-audit tests, use [`CONTRIBUTING.md`](CONTRIBUTING.md).
-
-Broad releases should pass both `evals/pressure-cases.md`, which checks resistance to method-first, gap-first, and vague-impact failures, and `evals/source-audit-cases.md`, which checks whether citations support the claims attached to them.
-
-Before release, run the structural gate:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts/verify-release.ps1 -Level broad
-```
-
-Mature-product work has a stricter operating model:
-
-- Read [`docs/mature-release-operating-model.md`](docs/mature-release-operating-model.md) before calling the skill mature.
-- Record the readiness decision with [`evals/mature-release-run-template.md`](evals/mature-release-run-template.md).
-- Run `powershell -ExecutionPolicy Bypass -File scripts/verify-release.ps1 -Level mature`; if the gate fails, keep the release labeled broad/public beta.
 
 ### Limits
 
@@ -363,7 +359,7 @@ The references below are cited as methodological sources for the skill, not as d
 8. Nielsen, M. (2004). Principles of effective research. https://michaelnielsen.org/blog/principles-of-effective-research/
 9. Peters, M. A. K. (2025). How to develop good research questions. *Nature Human Behaviour*. https://doi.org/10.1038/s41562-025-02292-5
 10. Orchestra Research. (n.d.). Research Idea Brainstorming. *AI-Research-SKILLs*. Retrieved June 1, 2026, from https://github.com/Orchestra-Research/AI-Research-SKILLs/blob/main/21-research-ideation/brainstorming-research-ideas/SKILL.md
-11. Herfeld, C., & Ivanova, M. (2021). Introduction: first principles in science—their status and justification. *Synthese, 198*, 3297-3308. https://doi.org/10.1007/s11229-020-02801-1
+11. Herfeld, C., & Ivanova, M. (2021). Introduction: first principles in science-their status and justification. *Synthese, 198*, 3297-3308. https://doi.org/10.1007/s11229-020-02801-1
 12. Hendry, R. F. (2021). Elements and (first) principles in chemistry. *Synthese, 198*, 3391-3411. https://doi.org/10.1007/s11229-019-02312-8
 13. Hoover, K. D. (2021). First principles, fallibilism, and economics. *Synthese, 198*, 3309-3327. https://doi.org/10.1007/s11229-018-02021-8
 14. Tan, J., & Xiao, X. (2025). Harness first-principles thinking in problem-based learning for chemical education. *Journal of Chemical Education, 102*(2), 943-947. https://doi.org/10.1021/acs.jchemed.4c01178

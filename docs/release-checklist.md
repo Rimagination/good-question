@@ -14,10 +14,11 @@ Use this checklist before publishing `good-question` beyond local use.
 ## Small Public Beta Gate
 
 - [ ] `SKILL.md` frontmatter has valid `name` and `description`.
-- [ ] README has installation, quick start, limits, examples/evals, and field playbook entry.
+- [ ] README has installation, quick start, limits, field playbook entry, and user-facing method sources.
 - [ ] `references/` cards are load-on-demand and do not duplicate the main workflow.
 - [ ] `examples/worked-examples.md` contains at least three compact examples.
 - [ ] `evals/pressure-cases.md` covers method-first, gap-first, grant, Chinese thesis, current literature, and onboarding.
+- [ ] First-principles behavior, if changed, keeps source audit, problematization, strong inference, and domain adapters in force.
 - [ ] Agent eval run is recorded in `evals/`.
 - [ ] `scripts/verify-release.ps1 -Level beta` passes.
 - [ ] `git diff --check` passes.
@@ -27,6 +28,7 @@ Use this checklist before publishing `good-question` beyond local use.
 ## Broad Release Gate
 
 - [ ] `evals/source-audit-cases.md` passes with no 0 in source fit or repair behavior.
+- [ ] `evals/first-principles-literature-cases.md` passes with no 0 in compatibility, evidence discipline, or repair behavior.
 - [ ] At least one current-literature answer includes `Domain Brief`, `Evidence ledger`, and `Source Audit`.
 - [ ] At least one source-audit spot check is recorded in `evals/`.
 - [ ] Field playbooks cover at least five distinct domains and one interpretive/humanities domain.
@@ -57,6 +59,7 @@ Use this checklist before publishing `good-question` beyond local use.
 - The skill presents "nobody has studied X" without source-backed evidence.
 - The skill produces only topics, titles, or methods instead of questions.
 - Current-literature answers do not include an evidence ledger.
+- First-principles reasoning is used to bypass source audit, field evidence, rival hypotheses, or assumption-challenging.
 - Reviewer objections are generic and not tied to the candidate.
 - New field guidance has not been tested with at least one pressure case.
 - The release is called mature while `scripts/verify-release.ps1 -Level mature` still fails.

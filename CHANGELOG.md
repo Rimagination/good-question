@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.2.0 - 2026-07-01
+
+### Added
+
+- First-principles lens as a compatibility card for using first-principles thinking without overriding source audit, problematization, strong inference, domain adapters, or field evidence.
+- Literature-based first-principles eval cases grounded in Herfeld & Ivanova, Hendry, Hoover, Tan & Xiao, Platt, and Alvesson & Sandberg.
+
+### Changed
+
+- `SKILL.md`, README, contribution guidance, release checklist, and release verification now recognize first-principles behavior as a calibration layer rather than a master rule.
+- README keeps release gates and eval details out of the main user-facing flow; maintainers should use `CONTRIBUTING.md` and `docs/release-checklist.md`.
+
 ## v0.1.0 - 2026-06-02
 
 ### Added

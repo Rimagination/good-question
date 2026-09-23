@@ -27,6 +27,8 @@ Source-audit cases must start with:
 
 The mature release gate counts these fields. Do not add unlabeled cases to inflate the corpus.
 
+First-principles literature cases should include a `**Source anchor:**` line and a `**Trap:**` line before `**Raw input:**`. They are not counted as real user case notes; they test compatibility between the first-principles lens and the existing method system.
+
 ## Scoring
 
 Use 0-2 for each item:
@@ -48,6 +50,7 @@ Passing threshold: 9/12 overall, with no 0 in evidence discipline, rivals, or fe
 |---|---|
 | `pressure-cases.md` | Tests core question-sharpening behavior across common weak inputs |
 | `source-audit-cases.md` | Tests whether citations support the claims attached to them |
+| `first-principles-literature-cases.md` | Tests whether first-principles reasoning remains a calibration layer rather than overriding source audit, problematization, strong inference, or domain adapters |
 | `source-audit-run-template.md` | Template for recording source-audit runs and spot checks |
 | `run-2026-06-02-agent-eval.md` | Records a real multi-agent pressure run and follow-up regressions |
 | `run-2026-06-02-release-verification.md` | Records a broad-release structural verification run |
@@ -63,6 +66,6 @@ Passing threshold: 9/12 overall, with no 0 in evidence discipline, rivals, or fe
 
 For small public beta, run or manually inspect `pressure-cases.md`.
 
-For broad release, also run `source-audit-cases.md` and do manual spot checks on citations in at least one current-literature answer.
+For broad release, also run `source-audit-cases.md`, `first-principles-literature-cases.md`, and manual spot checks on citations in at least one current-literature answer.
 
 For mature release, run `scripts/verify-release.ps1 -Level mature` and record the corpus counts, spot checks, and release decision with `mature-release-run-template.md`.

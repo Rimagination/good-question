@@ -9,6 +9,7 @@
 - **Domain playbook entries:** human-facing guidance for a field or subfield.
 - **Domain adapter entries:** agent-facing evidence norms and reviewer objections.
 - **Source-audit cases:** examples where citations might not support the claims attached to them.
+- **First-principles literature cases:** source-grounded traps where first-principles reasoning might overrule evidence, rivals, or field norms.
 - **Real case notes:** public-source or user-anonymized situations that safely preserve the weak form, repair move, and final question shape.
 
 ## Contribution Rules
@@ -17,10 +18,11 @@
 2. Name the failure mode: method-first, gap-first, novelty-only, no falsifier, no pilot, weak source, wrong field norm, or generic onboarding.
 3. Every pressure case must include `**Field:**` and `**Failure mode:**` metadata before `**Raw input:**`.
 4. Every source-audit case must include `**Field:**` and `**Trap:**` metadata before `**Raw input:**`.
-5. Keep examples compact; one sharp example beats five vague ones.
-6. Do not add a domain playbook that only lists topics. Include weak forms, stronger forms, reviewer objections, and a reusable prompt.
-7. Do not add a source unless it supports a specific claim.
-8. Preserve Chinese examples and templates when editing Chinese-facing guidance.
+5. Every first-principles literature case must include `**Source anchor:**` and `**Trap:**` metadata before `**Raw input:**`.
+6. Keep examples compact; one sharp example beats five vague ones.
+7. Do not add a domain playbook that only lists topics. Include weak forms, stronger forms, reviewer objections, and a reusable prompt.
+8. Do not add a source unless it supports a specific claim.
+9. Preserve Chinese examples and templates when editing Chinese-facing guidance.
 
 ## File Map
 
@@ -31,6 +33,7 @@
 | Add human-facing field usage | `docs/field-playbooks.md` |
 | Add messy test inputs | `evals/pressure-cases.md` |
 | Add source-support tests | `evals/source-audit-cases.md` |
+| Add first-principles compatibility tests | `evals/first-principles-literature-cases.md` |
 | Add compact demonstrations | `examples/worked-examples.md` |
 | Add real case evidence | `examples/case-notes.md` |
 | Prepare release | `docs/release-checklist.md` |
@@ -50,6 +53,7 @@ Mature real case notes must include `Provenance` metadata. Use `public-source` f
 
 - [ ] Does the new case include raw input, expected moves, pass conditions, and failure modes?
 - [ ] Does every new pressure/source-audit case include the required metadata lines?
+- [ ] If first-principles behavior changed, did `evals/first-principles-literature-cases.md` still pass?
 - [ ] Does the change make a weak idea visibly weaker or a good question visibly sharper?
 - [ ] Does the output require stake, rivals, falsifier, feasible pilot, and reviewer risk?
 - [ ] If current literature is involved, does it require Domain Brief, Evidence ledger, and Source Audit?
