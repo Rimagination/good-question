@@ -169,7 +169,7 @@ git clone https://github.com/Rimagination/good-question.git ~/.claude/skills/goo
 | Hamming, Nielsen [7][8] | 科研品味来自长期维护重要问题清单和可攻击机会 |
 | Peters [9] | 好问题常常来自对文献、不确定性和约束的反复重写 |
 | Orchestra Research [10] | 用结构化视角发散，再用严格标准收束 |
-| First-principles literature [11][12][13][14] | 第一性原理适合作为校准工具，用来暴露基本约束和假设边界，但不能替代证据、领域规范或竞争性假设 |
+| First-principles literature [11][12][13][14] | 回到基本约束、厘清关键假设，并结合证据、领域规范和竞争性解释检验研究判断 |
 
 ### 能力边界
 
@@ -334,7 +334,7 @@ This is not just a prompt bundle. It turns research-method advice from reliable 
 | Hamming, Nielsen [7][8] | Research taste comes from important-problems lists and attackable openings |
 | Peters [9] | Good questions often emerge through iterative rewriting of literature, uncertainty, and constraints |
 | Orchestra Research [10] | Diverge with structured lenses, then converge with strict standards |
-| First-principles literature [11][12][13][14] | First principles work best as a calibration layer for constraints and assumptions, not as a replacement for evidence, field norms, or rival hypotheses |
+| First-principles literature [11][12][13][14] | Return to basic constraints, clarify key assumptions, and test research judgments against evidence, disciplinary norms, and competing explanations |
 
 ### Limits
 
