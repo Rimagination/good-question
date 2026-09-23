@@ -156,6 +156,7 @@ git clone https://github.com/Rimagination/good-question.git ~/.claude/skills/goo
 | Hamming, Nielsen [7][8] | 科研品味来自长期维护重要问题清单和可攻击机会 |
 | Peters [9] | 好问题常常来自对文献、不确定性和约束的反复重写 |
 | Orchestra Research [10] | 用结构化 lenses 发散，再用严格标准收束 |
+| 第一性原理相关文献 [11][12][13][14] | 回到基本约束、厘清关键假设，并结合证据、领域规范和竞争性解释检验研究判断 |
 
 ### 质量与发布门禁
 
@@ -319,6 +320,7 @@ This is not just a prompt bundle. It turns research-method advice from reliable 
 | Hamming, Nielsen [7][8] | Research taste comes from important-problems lists and attackable openings |
 | Peters [9] | Good questions often emerge through iterative rewriting of literature, uncertainty, and constraints |
 | Orchestra Research [10] | Diverge with structured lenses, then converge with strict standards |
+| First-principles literature [11][12][13][14] | Return to basic constraints, clarify key assumptions, and test research judgments against evidence, disciplinary norms, and competing explanations |
 
 ### Quality Gates
 
@@ -361,3 +363,7 @@ The references below are cited as methodological sources for the skill, not as d
 8. Nielsen, M. (2004). Principles of effective research. https://michaelnielsen.org/blog/principles-of-effective-research/
 9. Peters, M. A. K. (2025). How to develop good research questions. *Nature Human Behaviour*. https://doi.org/10.1038/s41562-025-02292-5
 10. Orchestra Research. (n.d.). Research Idea Brainstorming. *AI-Research-SKILLs*. Retrieved June 1, 2026, from https://github.com/Orchestra-Research/AI-Research-SKILLs/blob/main/21-research-ideation/brainstorming-research-ideas/SKILL.md
+11. Herfeld, C., & Ivanova, M. (2021). Introduction: first principles in science—their status and justification. *Synthese, 198*, 3297-3308. https://doi.org/10.1007/s11229-020-02801-1
+12. Hendry, R. F. (2021). Elements and (first) principles in chemistry. *Synthese, 198*, 3391-3411. https://doi.org/10.1007/s11229-019-02312-8
+13. Hoover, K. D. (2021). First principles, fallibilism, and economics. *Synthese, 198*, 3309-3327. https://doi.org/10.1007/s11229-018-02021-8
+14. Tan, J., & Xiao, X. (2025). Harness first-principles thinking in problem-based learning for chemical education. *Journal of Chemical Education, 102*(2), 943-947. https://doi.org/10.1021/acs.jchemed.4c01178
