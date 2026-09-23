@@ -12,6 +12,7 @@ Help a researcher turn a vague interest, literature gap, rough idea, failed proj
 - Prefer one sharp question over many decorative ideas.
 - This skill is a durable research-question methodology, not an omniscient domain encyclopedia.
 - Treat novelty as insufficient unless the question also matters.
+- When significance or value is challenged, assess expression and substantive contribution separately. Poor presentation does not establish a weak contribution; clearer prose does not establish a strong one. Use `references/contribution-check.md` before treating a value objection as a wording problem.
 - Separate a topic, a problem, a hypothesis, and a project plan.
 - Make hidden assumptions explicit before proposing methods.
 - Treat first-principles thinking as a calibration lens for stakes, assumptions, rivals, falsifiers, and evidence boundaries; do not let it override source audit, field evidence, or competing hypotheses.
@@ -148,6 +149,10 @@ Generate 5-10 candidate questions using a mix of these lenses:
 
 For each candidate, include one sentence for the question and one sentence for the hidden assumption or tension it attacks.
 
+### 3.5. Check the Substantive Contribution
+
+Before ranking a proposal or defending its significance, use `references/contribution-check.md` to compare the claimed increment with the closest existing knowledge or method. Check for a previously unclear structural relation, a new judgment guarantee, a newly tractable problem, or correction of a consequential systematic decision error. These are non-exhaustive lenses, not four mandatory contributions. Distinguish established results, contribution hypotheses and unresolved evidence.
+
 ### 4. Converge Ruthlessly
 
 Score promising candidates from 1-5:
@@ -161,7 +166,7 @@ Score promising candidates from 1-5:
 | Originality | Challenges assumptions or combines fields non-trivially |
 | Downside learning | Even a negative result teaches something publishable or useful |
 
-Drop or park candidates that fail any kill rule:
+Drop or park candidates when available evidence supports a kill rule. An unresolved check is not a demonstrated failure; record the missing evidence and next discriminating check before deciding:
 
 - No clear beneficiary, theoretical stake, or practical consequence.
 - Only says "nobody has done X" without why X matters.
@@ -184,6 +189,7 @@ For the top 1-3 questions, output this card:
 **Working title:** ...
 **Research question:** ...
 **Why it matters:** ...
+**Contribution relative to the closest alternative (established / hypothesized / unresolved):** ...
 **Core assumption challenged:** ...
 **Competing hypotheses:** H1 ...; H2 ...; H3 ...
 **Discriminating observation or experiment:** ...
@@ -202,6 +208,7 @@ If the user writes in Chinese, prefer this localized card:
 **暂定题目：** ...
 **核心研究问题：** ...
 **为什么值得做：** ...
+**相对最近邻工作的实质增量（已证实／假说／待核查）：** ...
 **它挑战了什么默认假设：** ...
 **竞争性解释：** H1 ...；H2 ...；H3 ...
 **关键判别证据或实验：** ...
@@ -224,6 +231,7 @@ Load reference cards on demand:
 - `references/platt-strong-inference.md`: use for mechanism questions, competing hypotheses, decisive experiments, and falsification.
 - `references/problematization.md`: use for literature-gap work, theory papers, and assumption-challenging questions.
 - `references/heilmeier-catechism.md`: use for grants, proposals, project pitches, and reviewer-style stress tests.
+- `references/contribution-check.md`: use when comparing substantive contributions or separating a significance objection from a presentation problem.
 - `references/hamming-nielsen-research-taste.md`: use for broad direction, important-problems lists, and long-term research taste.
 - `references/peters-question-development.md`: use for turning literature clusters into clear research questions.
 - `references/orchestra-lenses.md`: use for fast ideation lenses such as abstraction shifts, tensions, boundary probing, and what-changed analysis.

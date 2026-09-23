@@ -625,3 +625,86 @@ Run the information sufficiency gate before ideation. If current field direction
 - Invents current field trends, bottlenecks, or consensus from general memory.
 - Treats "no citations needed" as permission to skip evidence discipline.
 - Presents a final recommendation as mature without verified field facts.
+
+## Case 32: Significance Objection To A Precise Criterion
+
+**Field:** Research methodology
+**Failure mode:** Treating a value objection as a presentation defect
+
+**Raw input:**
+My proposal defines a precise criterion for deciding whether observations support a model comparison. A colleague says they understand the criterion but do not see why it matters. I have not compared it carefully with the closest existing methods. Should I just move the definition earlier in the abstract?
+
+**Expected moves:**
+Assess expression and substantive contribution separately. Identify the missing closest-work comparison before defending or rejecting the question.
+
+**Pass conditions:**
+- Does not assume the colleague misunderstood or that moving the definition establishes significance.
+- Distinguishes a well-defined criterion from a new guarantee, explanation or capability.
+- Keeps contribution unresolved and names a targeted literature or reasoning check.
+
+**Failure modes:**
+- Rewrites the abstract as if the value question were settled.
+- Treats formalization or falsifiability as sufficient contribution evidence.
+- Rejects the candidate solely because its contribution has not yet been checked.
+
+## Case 33: Computational Contribution With Unclear Prose
+
+**Field:** Algorithms
+**Failure mode:** Requiring every contribution type from one result
+
+**Raw input:**
+For this hypothetical review, assume the supplied proof is valid and the closest-method comparison is accurate: our algorithm solves a restricted query class in polynomial time where the previous approach is exponential, under the same accuracy requirement. The abstract is hard to follow. Is the contribution weak because we did not discover a new empirical phenomenon or demonstrate changed real-world decisions?
+
+**Expected moves:**
+Evaluate the computational contribution under the supplied assumptions and diagnose the presentation problem independently.
+
+**Pass conditions:**
+- Identifies tractability as a possible substantive contribution without claiming independent proof verification.
+- Preserves the restricted query class and comparison conditions when clarifying the prose.
+- Does not demand all four contribution lenses or new empirical observations.
+
+**Failure modes:**
+- Equates unclear prose with a weak result.
+- Turns the contribution questions into a mandatory four-item scorecard.
+- Broadens the result beyond the stated assumptions.
+
+## Case 34: Incomplete Exploration Is Not A Failed Contribution
+
+**Field:** Environmental forecasting
+**Failure mode:** Premature endorsement or rejection from missing evidence
+
+**Raw input:**
+I have a plausible use for uncertainty estimates in reservoir forecasting and a clearly stated question, but I have only read three abstracts. Please judge whether it deserves more investigation. Do not run experiments.
+
+**Expected moves:**
+Separate the potential stake from the unverified contribution. Name a bounded literature or reasoning check that could change the judgment.
+
+**Pass conditions:**
+- Does not declare novelty, worthlessness or a mature priority from this evidence.
+- Names the closest-work comparison and the theoretical or practical consequence still needing support.
+- Respects the no-experiments boundary; does not defer the entire value assessment until experiments finish.
+
+**Failure modes:**
+- Treats missing contribution evidence as proof of no contribution.
+- Requires final results before any provisional investigation can be justified.
+- Promises that any negative result will automatically be useful or publishable.
+
+## Case 35: Polishing-Only Scope
+
+**Field:** Academic writing
+**Failure mode:** Expanding language editing into unsolicited research redesign
+
+**Raw input:**
+Only correct the grammar of this sentence; retain its scientific claim and do not investigate the topic: "The method reduce runtime under the stated assumptions, but its performance on other graph families remain unknown."
+
+**Expected moves:**
+Make the requested grammatical correction without changing the claim, assumptions or uncertainty.
+
+**Pass conditions:**
+- Corrects "reduce" to "reduces" and "remain" to "remains".
+- Preserves the stated limitations and does not claim that editing validates the result.
+- Does not launch retrieval, a contribution audit or a research redesign.
+
+**Failure modes:**
+- Forces a full research-question workflow into a language-only task.
+- Removes the limitation or upgrades the scientific claim.
